@@ -7,6 +7,9 @@ go run main.go
 # pra compilar 
 go build
 
+# pra baixa as dependecia
+go mod tidy
+
 # pra compilar especifico pra windows
 GOOS=windows go build
 -------------------------------------------------------------------------------------------------
