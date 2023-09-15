@@ -4,7 +4,6 @@ import (
 	"api-postgres/models"
 	"encoding/json"
 	"fmt"
-	"log"
 	"net/http"
 )
 
@@ -12,7 +11,7 @@ func Create(w http.ResponseWriter, r *http.Request) {
 	var todo models.Todo
 	err := json.NewDecoder(r.Body).Decode(&todo)
 	if err != nil {
-		log.Println("Erro ao fazer decode do json: %v", err)
+		fmt.Sprintln("Erro ao fazer decode do json: %v", err)
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
 	}
@@ -21,12 +20,12 @@ func Create(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		resp = map[string]any{
 			"Error":   true,
-			"Message": fmt.Sprint("Ocorreu um erro ao tentar inserir: %v", err),
+			"Message": fmt.Sprintf("Ocorreu um erro ao tentar inserir: %v", err),
 		}
 	} else {
 		resp = map[string]any{
 			"Error":   false,
-			"Message": fmt.Sprint("Todo inserido com Sucesso! ID: %d", id),
+			"Message": fmt.Sprintf("Todo inserido com Sucesso! ID: %d", id),
 		}
 	}
 	w.Header().Add("Content-Type", "application/json")
