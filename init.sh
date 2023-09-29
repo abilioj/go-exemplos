@@ -12,6 +12,9 @@ go mod tidy
 
 # pra compilar especifico pra windows
 GOOS=windows go build
+
+# ver variavel
+go env
 -------------------------------------------------------------------------------------------------
 # Instalando plugin go
 go get -u github.com/golang/protobuf/protoc-gen-go

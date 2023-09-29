@@ -15,11 +15,11 @@ func main() {
 		panic(err)
 	}
 	r := chi.NewRouter()
-	r.Post("/", handlers.Create)
-	r.Put("/{id}", handlers.Update)
-	r.Delete("/{id}", handlers.Delete)
-	r.Get("/", handlers.List)
-	r.Get("/{id}", handlers.Get)
+	r.Post("/todos/", handlers.Create)
+	r.Put("/todos/", handlers.Update)
+	r.Delete("/todos/{id}", handlers.Delete)
+	r.Get("/todos/", handlers.List)
+	r.Get("/todos/{id}", handlers.Get)
 
 	http.ListenAndServe(fmt.Sprintf(":%s", configs.GetServerPort()), r)
 }

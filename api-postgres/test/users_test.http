@@ -1,0 +1,58 @@
+@port = 9000
+@ip = localhost
+@baseUrl = http://{{ip}}:{{port}}
+
+@path = todos
+
+
+@user = "admin"
+@password = "admin"
+
+# @name autenticar
+POST {{baseUrl}}/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "login": {{user}},
+  "senha": {{password}}
+}
+
+###
+@token = {{autenticar.response.body.$.accessToken}}
+
+### GetAll
+GET {{baseUrl}}/{{path}}/ HTTP/1.1
+
+### Get Id /todos/{id}
+@id = 1
+GET {{baseUrl}}/{{path}}/{{id}} HTTP/1.1
+
+### POST Id /todos/
+POST {{baseUrl}}/{{path}}/ HTTP/1.1
+Content-Type: application/json
+
+{
+	"id": 1,
+	"title": "TESTE", 
+	"description": "4TEST",
+	"done": true
+}
+
+### put Id /todos/
+PUT  {{baseUrl}}/{{path}}/ HTTP/1.1
+Content-Type: application/json
+
+{
+	"id": 9,
+	"title": "TESTE", 
+	"description": "4TEST",
+	"done": true
+}
+
+### put Id /todos/
+DELETE  {{baseUrl}}/{{path}}/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": 1
+}
