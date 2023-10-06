@@ -1,13 +1,23 @@
 package entity
 
 type User struct {
-	ID    int
-	Nome  string
-	Idade int
+	id    int
+	nome  string
+	idade int
 }
 
 func (u *User) New(id int, nome string, idade int) {
-	u.ID = id
-	u.Nome = nome
-	u.Idade = idade
+	u.id = id
+	u.nome = nome
+	u.idade = idade
+}
+
+func (u *User) GetId() int {
+	return u.id
+}
+func (u *User) GetNome() string {
+	return u.nome
+}
+func (u *User) GetIdade() int {
+	return u.idade
 }

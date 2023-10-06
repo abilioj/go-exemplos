@@ -18,5 +18,5 @@ func main() {
 
 	var u entity.User
 	u.New(1, "aj", 32)
-	fmt.Printf("\n%v - %v - %d", u.ID, u.Nome, u.Idade)
+	fmt.Printf("\n%v - %v - %d", u.GetId(), u.GetNome(), u.GetIdade())
 }
